@@ -1,0 +1,41 @@
+body{
+  /*background-color: red;*/
+  background-image: url("11.jpg") ;
+  background-size: cover;
+}
+h1{
+  text-align: center;
+  color: green;
+}
+.Pie_img{
+  text-align: center;
+  height: 200px;
+}
+img{
+  vertical-align: center;
+  display: inline-block;
+  height: 200px;
+}
+a{
+  margin: 0 auto;
+}
+
+.sda{
+  text-align: center;
+  color: red;
+}
+form{
+  font-size: 50px;
+  color: white;
+  text-align: center;
+  margin: 250px auto;
+  background-color: grey;
+  width: 600px;
+}
+.Copyright{
+  margin-top: 100px;
+  font-size: 50px;
+  text-align: center;
+  color:green;
+}
+
