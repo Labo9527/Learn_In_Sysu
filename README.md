@@ -1,2 +1,2 @@
-# Data-structure-and-algorithm
-My codes about Data structure and algorithm.
+Learn in Sysu
+My codes about anything in Sysu.
