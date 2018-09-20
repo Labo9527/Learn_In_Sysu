@@ -30,7 +30,7 @@ public:
 	// 构造函数
 	Vector(int c = DEFAULT_CAPACITY, int s = 0, T v = 0) //容量为c、规模为s、所有元素初始为v
 	{
-		_elem = new T[_capacity = c]; for (_size = 0; _size < s; _elem[_size++] = v);
+		_elem = new T[_capacity = c]; for (_size = 0; _size < s; _elem[_size++] = v);//需要写好转换构造函数
 	} //s<=c
 	Vector(T const* A, Rank n) { copyFrom(A, 0, n); } //数组整体复制
 	Vector(T const* A, Rank lo, Rank hi) { copyFrom(A, lo, hi); } //区间
@@ -63,8 +63,20 @@ public:
 	int deduplicate(); //无序去重
 	int uniquify(); //有序去重
 					// 遍历
-	void traverse(void(*) (T&)); //遍历（使用函数指针，只读或局部性修改）
+	void traverse(void (*) (T&)); //遍历（使用函数指针，只读或局部性修改）
 	template <typename VST> void traverse(VST&); //遍历（使用函数对象，可全局性修改）
 }; //Vector
 
-#include "vector_implementation.h"
+
+class Fib { //Fibonacci数列类
+private:
+	int f, g; //f = fib(k - 1), g = fib(k)。均为int型，很快就会数值溢出
+public:
+	Fib(int n) //初始化为不小于n的最小Fibonacci项
+	{
+		f = 0; g = 1; while (g < n) next();
+	} //fib(-1), fib(0)，O(log_phi(n))时间
+	int get() { return g; } //获取当前Fibonacci项，O(1)时间
+	int next() { g += f; f = g - f; return g; } //转至下一Fibonacci项，O(1)时间
+	int prev() { f = g - f; g -= f; return g; } //转至上一Fibonacci项，O(1)时间
+};
