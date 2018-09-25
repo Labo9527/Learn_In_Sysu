@@ -1,0 +1,186 @@
+body{
+  background-image: url("./img/background.png");
+  font-size: 8pt;
+  font-family: Verdana,Tahoma;
+  text-align: center;
+  padding: 0px;
+  margin: 0px;
+}
+
+.banner{
+  text-align: center;
+  background: url("./img/bannerbackground.png") repeat-x;
+  height: 50px;
+  margin: 0 0 0 0;
+}
+
+#movie_name{
+  font-size: 24pt;
+  font-weight: bold;
+  font-family: Tahoma,Verdana;
+  text-align: center;
+}
+
+#content_area{
+  text-align: center;
+  margin: 0 auto;
+  width: 800px;
+  border: 4px solid gray;
+  overflow: hidden;
+  display: inline-block;
+}
+
+#right_section{
+  float: right;
+  width: 250px;
+  background-color: #A2B964;
+  font-size: 8pt;
+  font-family: Arial;
+  height: 944.73px;
+  z-index: 3;
+}
+
+
+#left_section{
+  float:left;
+  width: 550px;
+  overflow: hidden;
+  height: 944.73px;
+  position:relative;
+}
+
+.toi{
+  font-style: italic;
+}
+
+span{
+  clear: both;
+}
+
+#top_content{
+  background: url("./Img/rottenbackground.png") repeat-x;
+  font-size: 48pt;
+  color:red;
+  font-weight: bold;
+  height: 83px;
+  text-align: left;
+}
+
+#small{
+  font-size: 8pt;
+  color: white;
+  font-family: Tahoma,Verdana;
+  position: relative;
+  left: -40px;
+  top:-18px;
+}
+
+#ROTTEN{
+  position:relative;
+}
+
+#big{
+  position:relative;
+  left:-20px;
+  top:-16px;
+}
+
+#left_column{
+  width: 47%;
+  float: left;
+  position: relative;
+  left: 2%;
+}
+
+#right_column{
+  width:47%;
+  float: right;
+  position: relative;
+  right: 2%;
+}
+
+.quote{
+  font-size: 8pt;
+  font-weight: bold;
+  background-color: #E1D697;
+  border: 2px solid gray;
+  padding: 8px;
+  overflow: hidden;
+}
+
+q{
+  position: relative;
+  clear: left;
+}
+
+.section{
+  text-align: left;
+  vertical-align: top;
+  /*padding-bottom: 3em;*/
+  margin-bottom: 3em;
+}
+
+.attitude{
+  margin: 5px;
+  /*padding: 5px;*/
+  display: inline-block;
+  position: relative;
+  float: left;
+}
+/*
+.reviewer{
+  font-style: italic;
+}
+*/
+.people{
+  padding: 5px;
+  float: left;
+}
+
+dl{
+  text-align: left;
+  margin: 10px;
+  z-index: 3;
+}
+
+dt{
+  font-weight: bold;
+  z-index: 3;
+}
+
+.dtd{
+  padding: 1em;
+}
+
+#bot{
+  bottom:0px;
+  left:0%;
+  width:700px;
+  position: absolute;
+  background-color: #A2B964;
+}
+
+#finally{
+  display: inline-block;
+  position: fixed;
+  bottom: 0px;
+  right: 0px;
+}
+
+.reviewer{
+  margin: 0px;
+  padding: 0px;
+}
+
+.toi{
+  margin:0px;
+  padding: 0px;
+}
+
+#splly {
+  margin-top: 12.8px;
+}
+
+#page{
+  margin: 5px;
+}
