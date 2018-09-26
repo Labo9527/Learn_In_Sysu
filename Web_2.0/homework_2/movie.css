@@ -73,6 +73,7 @@ span{
   position: relative;
   left: -40px;
   top:-18px;
+  font-weight: normal;
 }
 
 #ROTTEN{
@@ -118,10 +119,12 @@ q{
   vertical-align: top;
   /*padding-bottom: 3em;*/
   margin-bottom: 3em;
+  padding-top: 3em;
 }
 
 .attitude{
-  margin: 5px;
+  margin-right: 5px;
+  /*margin: 5px;*/
   /*padding: 5px;*/
   display: inline-block;
   position: relative;
@@ -149,7 +152,7 @@ dt{
 }
 
 .dtd{
-  padding: 1em;
+  padding-bottom: 2em;
 }
 
 #bot{
@@ -178,9 +181,14 @@ dt{
 }
 
 #splly {
-  margin-top: 12.8px;
+  margin-bottom: 12.8px;
+  padding-bottom: 12.8px;
 }
 
 #page{
   margin: 5px;
+}
+
+.top{
+  padding-top: 0em;
 }
