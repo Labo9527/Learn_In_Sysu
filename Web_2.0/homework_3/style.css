@@ -1,24 +1,33 @@
-
+/*
+为全局容器html,body设定属性
+ */
 html,body{
   width:100%;
   height: 100%;
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
-
+/*
+设置大容器container的相关属性
+ */
 #at-plus-container{
   position:relative;
   width: 180px;
   height: 100%;
   margin: 0 auto;
 }
-
+/*
+设置用来定位的小容器的相关属性
+ */
 #bottom-positioner{
   position: absolute;
   bottom: 0;
   width: 100%;
 }
-
+/*
+设置图标展开后，信息bar的位置及大小等外观属性
+ */
 #button:hover #info-bar{
   position: absolute;
   width: 130px;
@@ -29,7 +38,17 @@ html,body{
   background-color: #7E7E7E;
   opacity: 1;
 }
+/*
+用来专门定位info-bar中元素
+ */
+.mine{
+  position: relative;
+  bottom: 10px;
+}
 
+/*
+设置图标未展开的时候，信息bar的位置及属性，主要是用来定位动画的起点
+ */
 #info-bar{
   position: absolute;
   width: 26px;
@@ -41,7 +60,9 @@ html,body{
   transition: all 0.5s;
   opacity: 0;
 }
-
+/*
+设置控制环的初始位置
+ */
 #control-ring-container{
   position: absolute;
   width: 180px;
@@ -56,13 +77,17 @@ html,body{
   position:relative;
   right:3px;
 }
-
+/*
+设置感应区域的大小及位置
+ */
 #button{
   width: 70px;
   height: 70px;
   margin: 75px 55px;
 }
-
+/*
+设置图标展开后，@图标的外观样式
+ */
 #button:hover .apb{
   position: absolute;
   width: 50px;
@@ -74,7 +99,9 @@ html,body{
   background-size: 40px 30px;
   transition: all 1.5s;
 }
-
+/*
+设置图标未展开时，@图标的外观样式
+ */
 #button .apb{
   position: absolute;
   width: 26px;
@@ -85,7 +112,9 @@ html,body{
   background: #989FCF url("assets/images/atplus_white.png") no-repeat center;
   background-size: 20px 15px;
 }
-
+/*
+设置图标未展开时，左侧控制环列表的位置，主要是用来定位动画的起点
+ */
 #control-ring li{
   list-style: none;
   position: absolute;
@@ -100,7 +129,9 @@ html,body{
   transition: all 0.5s;
   opacity: 0;
 }
-
+/*
+以下都是来设置控制环展开后的外观样式以及位置
+ */
 #button:hover #control-ring li{
   opacity: 1;
 }
@@ -134,7 +165,9 @@ html,body{
   margin-left: 60px;
   background-image: url("assets/images/signin.png");
 }
-
+/*
+以下都是用来设置列表的各个项的外观样式
+ */
 #info-bar ul{
   margin: 0;
   padding: 0;
@@ -172,7 +205,9 @@ html,body{
 #info-bar li.comment{
   font-size: 30px;
 }
-
+/*
+用来设置未读提示的样式和位置
+ */
 #control-ring li span.unread{
   position: absolute;
   top: -2px;
