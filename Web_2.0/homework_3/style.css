@@ -20,7 +20,7 @@ html,body{
 /*
 设置用来定位的小容器的相关属性
  */
-#bottom-positioner{
+#bottom-position{
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -65,6 +65,15 @@ html,body{
  */
 #control-ring-container{
   position: absolute;
+  width: 40px;
+  height: 40px;
+  bottom: 165px;
+  left: 6px;
+  border-radius: 50%;
+}
+
+#control-ring-container:hover{
+  position: absolute;
   width: 180px;
   height: 180px;
   bottom: 20px;
@@ -81,9 +90,10 @@ html,body{
 设置感应区域的大小及位置
  */
 #button{
-  width: 70px;
-  height: 70px;
-  margin: 75px 55px;
+  position: relative;
+  width:  25px;
+  height: 25px;
+  margin: 0px 0px;
 }
 /*
 设置图标展开后，@图标的外观样式
@@ -97,7 +107,7 @@ html,body{
   border-radius: 50%;
   background: #303F9F url("assets/images/atplus_green.png") no-repeat center;
   background-size: 40px 30px;
-  transition: all 1.5s;
+  transition: all 0.5s;
 }
 /*
 设置图标未展开时，@图标的外观样式
