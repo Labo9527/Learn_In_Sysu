@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="EN">
+  <head>
+    <title>Whac-a-mole</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="Whac_a_mole.css">
+    <script src="Whac_a_mole.js"></script>
+  </head>
+  <body>
+    <h1>
+      Whac-a-mole
+    </h1>
+    <p>
+      Test your skill.How many boxes(moles) can you check(hit) in 30 seconds?
+    </p>
+    <div id="Content">
+        <div id="Row_1">
+          <button id="Sand">
+            Start Game | Stop Game
+          </button >
+          <div id="Time_Area">
+            <p id="Time_p">Time:</p>
+            <input id="Time_Counter" readonly="readonly">
+          </div>
+        </div>
+        <br>
+        <div id="Row_2">
+          <input id="Status" readonly="readonly">
+            <p id="Score_p">Score:</p>
+            <input id="Score_Counter" readonly="readonly">
+        </div>
+    </div>
+    <br>
+    <div id="Big_Game">
+      <div id="One" class="Game_Row">
+        <input type="radio" class="Game_Radio" name="Mole" onchange = "Yes(this)">
+        <input type="radio" class="Game_Radio" name="Mole" onchange = "Yes(this)">
+        <input type="radio" class="Game_Radio" name="Mole" onchange = "Yes(this)">
+        <input type="radio" class="Game_Radio" name="Mole" onchange = "Yes(this)">
+        <input type="radio" class="Game_Radio" name="Mole" onchange = "Yes(this)">
+        <input type="radio" class="Game_Radio" name="Mole" onchange = "Yes(this)">
+        <input type="radio" class="Game_Radio" name="Mole" onchange = "Yes(this)">
+        <input type="radio" class="Game_Radio" name="Mole" onchange = "Yes(this)">
+        <input type="radio" class="Game_Radio" name="Mole" onchange = "Yes(this)">
+        <input type="radio" class="Game_Radio" name="Mole" onchange = "Yes(this)">
+      </div>
+      <div id="Two" class="Game_Row">
+        <input type="radio" class="Game_Radio" name="Mole" onchange = "Yes(this)">
+        <input type="radio" class="Game_Radio" name="Mole" onchange = "Yes(this)">
+        <input type="radio" class="Game_Radio" name="Mole" onchange = "Yes(this)">
+        <input type="radio" class="Game_Radio" name="Mole" onchange = "Yes(this)">
+        <input type="radio" class="Game_Radio" name="Mole" onchange = "Yes(this)">
+        <input type="radio" class="Game_Radio" name="Mole" onchange = "Yes(this)">
+        <input type="radio" class="Game_Radio" name="Mole" onchange = "Yes(this)">
+        <input type="radio" class="Game_Radio" name="Mole" onchange = "Yes(this)">
+        <input type="radio" class="Game_Radio" name="Mole" onchange = "Yes(this)">
+        <input type="radio" class="Game_Radio" name="Mole" onchange = "Yes(this)">
+      </div>
+      <div id="Three" class="Game_Row">
+        <input type="radio" class="Game_Radio" name="Mole" onchange = "Yes(this)">
+        <input type="radio" class="Game_Radio" name="Mole" onchange = "Yes(this)">
+        <input type="radio" class="Game_Radio" name="Mole" onchange = "Yes(this)">
+        <input type="radio" class="Game_Radio" name="Mole" onchange = "Yes(this)">
+        <input type="radio" class="Game_Radio" name="Mole" onchange = "Yes(this)">
+        <input type="radio" class="Game_Radio" name="Mole" onchange = "Yes(this)">
+        <input type="radio" class="Game_Radio" name="Mole" onchange = "Yes(this)">
+        <input type="radio" class="Game_Radio" name="Mole" onchange = "Yes(this)">
+        <input type="radio" class="Game_Radio" name="Mole" onchange = "Yes(this)">
+        <input type="radio" class="Game_Radio" name="Mole" onchange = "Yes(this)">
+      </div>
+      <div id="Four" class="Game_Row">
+        <input type="radio" class="Game_Radio" name="Mole" onchange = "Yes(this)">
+        <input type="radio" class="Game_Radio" name="Mole" onchange = "Yes(this)">
+        <input type="radio" class="Game_Radio" name="Mole" onchange = "Yes(this)">
+        <input type="radio" class="Game_Radio" name="Mole" onchange = "Yes(this)">
+        <input type="radio" class="Game_Radio" name="Mole" onchange = "Yes(this)">
+        <input type="radio" class="Game_Radio" name="Mole" onchange = "Yes(this)">
+        <input type="radio" class="Game_Radio" name="Mole" onchange = "Yes(this)">
+        <input type="radio" class="Game_Radio" name="Mole" onchange = "Yes(this)">
+        <input type="radio" class="Game_Radio" name="Mole" onchange = "Yes(this)">
+        <input type="radio" class="Game_Radio" name="Mole" onchange = "Yes(this)">
+      </div>
+      <div id="Five" class="Game_Row">
+        <input type="radio" class="Game_Radio" name="Mole" onchange = "Yes(this)">
+        <input type="radio" class="Game_Radio" name="Mole" onchange = "Yes(this)">
+        <input type="radio" class="Game_Radio" name="Mole" onchange = "Yes(this)">
+        <input type="radio" class="Game_Radio" name="Mole" onchange = "Yes(this)">
+        <input type="radio" class="Game_Radio" name="Mole" onchange = "Yes(this)">
+        <input type="radio" class="Game_Radio" name="Mole" onchange = "Yes(this)">
+        <input type="radio" class="Game_Radio" name="Mole" onchange = "Yes(this)">
+        <input type="radio" class="Game_Radio" name="Mole" onchange = "Yes(this)">
+        <input type="radio" class="Game_Radio" name="Mole" onchange = "Yes(this)">
+        <input type="radio" class="Game_Radio" name="Mole" onchange = "Yes(this)">
+      </div>
+      <div id="Six" class="Game_Row">
+        <input type="radio" class="Game_Radio" name="Mole" onchange = "Yes(this)">
+        <input type="radio" class="Game_Radio" name="Mole" onchange = "Yes(this)">
+        <input type="radio" class="Game_Radio" name="Mole" onchange = "Yes(this)">
+        <input type="radio" class="Game_Radio" name="Mole" onchange = "Yes(this)">
+        <input type="radio" class="Game_Radio" name="Mole" onchange = "Yes(this)">
+        <input type="radio" class="Game_Radio" name="Mole" onchange = "Yes(this)">
+        <input type="radio" class="Game_Radio" name="Mole" onchange = "Yes(this)">
+        <input type="radio" class="Game_Radio" name="Mole" onchange = "Yes(this)">
+        <input type="radio" class="Game_Radio" name="Mole" onchange = "Yes(this)">
+        <input type="radio" class="Game_Radio" name="Mole" onchange = "Yes(this)">
+      </div>
+    </div>
+    <div id="last">
+      <h2>
+        Instruction:
+      </h2>
+      <ol>
+        <li>
+          Click on the radio buttons(moles) as they are selected randomly by the computer.
+        </li>
+        <li>
+          1 point per hit, minus 1 point per miss.
+        </li>
+      </ol>
+    </div>
+  </body>
+</html>

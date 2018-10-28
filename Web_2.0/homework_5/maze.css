@@ -1,0 +1,169 @@
+#Big_Maze{
+  height: 300px;
+  width: 500px;
+  background-color: white;
+  margin: 0 auto;
+  position: relative;
+}
+
+body{
+  text-align: center;
+}
+
+.wall{
+  background-color: lightgrey;
+}
+
+
+#wall11{
+  position: absolute;
+  top: 0px;
+  left: 350px;
+  height: 50px;
+  width: 149px;
+  border-right: black 1px solid;
+  border-top: black 1px solid;
+}
+
+#wall10{
+  position: absolute;
+  top: 0px;
+  left: 151px;
+  height: 50px;
+  width: 199px;
+  border-top: black 1px solid;
+  border-bottom: black 1px solid;
+}
+
+#Out{
+  position: absolute;
+  height: 42px;
+  width: 42px;
+  top:204px;
+  background-color: blueviolet;
+  right: 0px;
+}
+
+#Anti_Cheat{
+  width: 20px;
+  height: 50px;
+  position: absolute;
+  background-color: black;
+  opacity: 0;
+  top:200px;
+  left: 430px;
+}
+
+.gate{
+  position: absolute;
+  top: -10%;
+  left: 40%;
+}
+
+#Enter{
+  position: absolute;
+  height: 42px;
+  width: 42px;
+  background-color: #A2B964;
+  top:204px;
+}
+
+#wall1{
+  height: 50px;
+  width: 150px;
+  border-top: black 1px solid;
+  border-left: black 1px solid;
+  border-right: black 1px solid;
+}
+
+#wall2{
+  height: 50px;
+  width: 150px;
+  border-left: black 1px solid;
+  border-right: black 1px solid;
+}
+
+#wall3{
+  position: absolute;
+  width: 150px;
+  top:50px;
+  right: 0px;
+  height: 50px;
+  border-right: black 1px solid;
+  border-left: black 1px solid;
+}
+
+#wall4{
+  width: 150px;
+  height: 100px;
+  position: absolute;
+  top:100px;
+  border-left: black 1px solid;
+  border-right: black 1px solid;
+  border-bottom: black 1px solid;
+}
+
+#wall5{
+  width: 150px;
+  height: 100px;
+  position: absolute;
+  top:100px;
+  right: 0px;
+  border-left: black 1px solid;
+  border-right: black 1px solid;
+  border-bottom: black 1px solid;
+}
+
+#wall6{
+  width: 200px;
+  height: 50px;
+  position: absolute;
+  bottom: 0px;
+  border: 1px solid black;
+}
+
+#wall8{
+  height: 50px;
+  width: 200px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  border-bottom: black 1px solid;
+  border-top: black 1px solid;
+  border-right: black 1px solid;
+}
+
+#wall9{
+  height: 50px;
+  width: 100px;
+  position: absolute;
+  bottom: 0;
+  left: 200px;
+  border-bottom: black 1px solid;
+}
+
+#wall7{
+  height: 150px;
+  width: 100px;
+  position: absolute;
+  left: 200px;
+  bottom: 50px;
+  border-left: black 1px solid;
+  border-right: black 1px solid;
+  border-top: black 1px solid;
+}
+
+#example{
+  background-color: lightgrey;
+  width: 100px;
+  height: 25px;
+  margin: 0 auto;
+}
+
+#Out{
+  line-height: 40px;
+}
+
+#Enter{
+  line-height: 40px;
+}
