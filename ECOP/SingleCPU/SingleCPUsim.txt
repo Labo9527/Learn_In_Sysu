@@ -1,0 +1,95 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date: 2018/11/15 20:13:32
+// Design Name: 
+// Module Name: SingleCPUsim
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//////////////////////////////////////////////////////////////////////////////////
+
+
+module SingleCPUsim();
+    reg CLK=0;
+    reg Reset=1;
+    wire DBDATASrc;
+    wire[5:0] op;
+    wire[4:0] rs;
+    wire[4:0] rt;
+    wire[4:0] rd;
+    wire[15:0] immediate;
+    wire [31:0]ReadData1;
+    wire [31:0]ReadData2;
+    wire [31:0]WriteData;
+    wire [31:0]DataOut;
+    wire [31:0]PCIN;
+    wire [31:0]PCOUT;
+    wire [1:0] PCSrc;
+    wire [31:0]PC_4;
+    wire [31:0]result;
+    wire [4:0]WriteReg;
+    wire [31:0] Rega;
+    wire [31:0] Regb;
+    wire[4:0] sa;
+    wire[31:0] truesa;
+    wire ALUSrcA;
+    wire ALUSrcB;
+    wire [31:0] PC_4_Immediate;
+    wire [31:0] extendImmediate;
+    wire ExtSel;
+    wire zero;
+    wire RegWre;
+    wire [31:0] PC_3;
+    wire [25:0] Bottom;
+    wire [27:0] Next;
+    SingleCPU scpu(.CLK(CLK),
+        .Reset(Reset),
+        .op(op),.rs(rs),
+        .rt(rt),.rd(rd),
+        .immediate(immediate),
+        .ReadData1(ReadData1),
+        .ReadData2(ReadData2),
+        .WriteData(WriteData),
+        .DataOut(DataOut),
+        .PCIN(PCIN),
+        .PCOUT(PCOUT),
+        .result(result),
+        .PC_4(PC_4),
+        .PCSrc(PCSrc),
+        .WriteReg(WriteReg),
+        .DBDATASrc(DBDATASrc),
+        .Rega(Rega),
+        .Regb(Regb),
+        .ALUSrcA(ALUSrcA),
+        .ALUSrcB(ALUSrcB),
+        .sa(sa),
+        .truesa(truesa),
+        .PC_4_Immediate(PC_4_Immediate),
+        .extendImmediate(extendImmediate),
+        .ExtSel(ExtSel),
+        .zero(zero),
+        .RegWre(RegWre),
+        .PC_3(PC_3),
+        .Bottom(Bottom),
+        .Next(Next));
+    always #5 CLK=~CLK;
+    initial begin
+        CLK=0;
+        Reset=1;
+        
+        #10 Reset=0;
+    end
+    
+    
+endmodule

@@ -1,0 +1,111 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date: 2018/11/15 19:01:27
+// Design Name: 
+// Module Name: SingleCPU
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//////////////////////////////////////////////////////////////////////////////////
+
+
+module SingleCPU(
+    input CLK,
+    input Reset,
+    output [5:0] op,
+    output [4:0] rs,
+    output [4:0] rt,
+    output [4:0] rd,
+    output [15:0] immediate,
+    output [31:0] ReadData1,
+    output [31:0] ReadData2,
+    output [31:0] WriteData,
+    output [31:0] DataOut,
+    output [31:0] PCIN,
+    output [31:0] PCOUT,
+    output [31:0] result,
+    output [31:0] PC_4,
+    output [1:0] PCSrc,
+    output [4:0] WriteReg,
+    output DBDATASrc,
+    output[31:0] Rega,
+    output[31:0] Regb,
+    output ALUSrcA,
+    output ALUSrcB,
+    output[4:0] sa,
+    output[31:0]truesa,
+    output[31:0]PC_4_Immediate,
+    output[31:0] extendImmediate,
+    output ExtSel,
+    output zero,
+    output RegWre,
+    output [31:0] PC_3,
+    output [25:0] Bottom,
+    output [27:0] Next
+    );
+    
+    
+    wire RD,WR;
+    
+    wire [2:0] ALUopcode;
+    
+    
+    wire [31:0] IDataOut;
+    wire [31:0] DataOut;
+    wire [31:0] IDataIn;
+    wire sign;
+    wire RegDst,InsMemRW,PCWre,mRD,mWR;
+    
+    assign Bottom=IDataOut[25:0];
+    assign Next=Bottom<<2;
+    assign PC_4=PCOUT+4;
+    assign PC_4_Immediate=PC_4+(extendImmediate<<2);
+    assign PC_3={PC_4[31:28],IDataOut[25:0],2'b00};
+    assign truesa={{27{1'b0}},sa};
+    
+    ControlUnit cu(op,zero,sign,RegWre,ALUSrcA,ALUSrcB,
+    PCSrc,ALUopcode,
+    RegDst,InsMemRW,PCWre,ExtSel,mRD,mWR,DBDATASrc);
+    
+    PC pc(CLK,Reset,PCWre,PCIN,PCOUT);
+    
+    InstructionMemory im(InsMemRW,PCOUT,op,rs,rt,rd,
+    sa,immediate,IDataOut);
+    
+    RegFile rf(CLK,RegWre,rs,rt,WriteReg,
+    WriteData,ReadData1,ReadData2);
+    
+    ALU alu(ALUopcode,Rega,Regb,result,zero,sign);
+    
+    SignZeroExtend sg(ExtSel,immediate,extendImmediate);
+    
+    DataMemory dm(ReadData2,DataOut,result,mRD,mWR,CLK);
+    
+    
+    
+    Multiplexer4 mul4(PCSrc,PCIN,PC_4,
+    PC_4_Immediate,PC_3);
+    
+    Multiplexer2_1 mul2_1(RegDst,rt,rd,WriteReg);
+    
+    Multiplexer2_32 mul2_2(ALUSrcA,ReadData1,truesa,
+    Rega);
+    
+    Multiplexer2_32 mul2_3(ALUSrcB,ReadData2,
+    extendImmediate,Regb);
+    
+    Multiplexer2_32 mul2_4(DBDATASrc,
+    result,DataOut,WriteData);
+    
+endmodule

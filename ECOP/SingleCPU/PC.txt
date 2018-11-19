@@ -1,0 +1,43 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date: 2018/11/14 18:59:49
+// Design Name: 
+// Module Name: PC
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//////////////////////////////////////////////////////////////////////////////////
+
+
+module PC(
+    input CLK,
+    input Reset,
+    input PCWre,
+    input [31:0] PCIN,
+    output reg[31:0] PCOUT
+    );
+    
+    initial begin
+        PCOUT<=0;
+    end
+    
+    always@(posedge CLK or posedge Reset) begin
+        if(Reset==1)    PCOUT<=0;
+        else begin 
+        if(PCWre==1)   PCOUT <= PCIN;
+        else PCOUT<=PCOUT;
+        end
+    end
+
+endmodule
