@@ -1,0 +1,280 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date: 2018/11/15 10:55:42
+// Design Name: 
+// Module Name: ControlUnit
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//////////////////////////////////////////////////////////////////////////////////
+
+
+module ControlUnit(
+    input [5:0] op,
+    input zero,
+    input sign,
+    output reg RegWre,
+    output reg ALUSrcA,
+    output reg ALUSrcB,
+    output reg [1:0] PCSrc,
+    output reg [2:0] ALUOp,
+    output reg RegDst,
+    output reg InsMemRW,
+    output reg PCWre,
+    output reg ExtSel,
+    output reg mRD,
+    output reg mWR,
+    output reg DBDATASrc
+    );
+    
+    always@(op or zero or sign)
+    begin
+        case(op)
+        6'b000000:
+        begin
+            PCWre=1;
+            ALUSrcA=0;
+            ALUSrcB=0;
+            RegWre=1;
+            InsMemRW=1;
+            mRD=1;
+            mWR=0;
+            DBDATASrc=0;
+            ALUOp=0;
+            PCSrc=0;
+            ExtSel=0;
+            RegDst=1;
+        end
+        6'b000001:
+        begin
+            PCWre=1;
+            ALUSrcA=0;
+            ALUSrcB=0;
+            RegWre=1;
+            InsMemRW=1;
+            mRD=1;
+            mWR=0;
+            DBDATASrc=0;
+            ALUOp=001;
+            PCSrc=0;
+            ExtSel=0;
+            RegDst=1;
+        end
+        6'b000010:
+        begin
+            PCWre=1;
+            ALUSrcA=0;
+            ALUSrcB=1;
+            RegWre=1;
+            InsMemRW=1;
+            mRD=1;
+            mWR=0;
+            DBDATASrc=0;
+            ALUOp=000;
+            PCSrc=0;
+            ExtSel=1;
+            RegDst=0;
+        end
+        6'b010000:
+        begin
+            PCWre=1;
+            ALUSrcA=0;
+            ALUSrcB=1;
+            RegWre=1;
+            InsMemRW=1;
+            mRD=1;
+            mWR=0;
+            DBDATASrc=0;
+            ALUOp=100;
+            PCSrc=0;
+            ExtSel=0;
+            RegDst=0;
+        end
+        6'b010001:
+        begin
+            PCWre=1;
+            ALUSrcA=0;
+            ALUSrcB=0;
+            RegWre=1;
+            InsMemRW=1;
+            mRD=1;
+            mWR=0;
+            DBDATASrc=0;
+            ALUOp=100;
+            PCSrc=0;
+            ExtSel=0;
+            RegDst=1;
+        end
+        6'b010010:
+        begin
+             PCWre=1;
+             ALUSrcA=0;
+             ALUSrcB=1;
+             RegWre=1;
+             InsMemRW=1;
+             mRD=1;
+             mWR=0;
+             DBDATASrc=0;
+             ALUOp=011;
+             PCSrc=0;
+             ExtSel=0;
+             RegDst=0;
+        end
+        6'b010011:
+        begin
+        PCWre=1;
+        ALUSrcA=0;
+        ALUSrcB=0;
+        RegWre=1;
+        InsMemRW=1;
+        mRD=1;
+        mWR=0;
+        DBDATASrc=0;
+        ALUOp=011;
+        PCSrc=0;
+        ExtSel=0;
+        RegDst=1;
+        end
+        6'b011000:
+        begin
+        PCWre=1;
+        ALUSrcA=1;
+        ALUSrcB=0;
+        RegWre=1;
+        InsMemRW=1;
+        mRD=1;
+        mWR=0;
+        DBDATASrc=0;
+        ALUOp=010;
+        PCSrc=0;
+        ExtSel=0;
+        RegDst=1;
+        end
+        6'b011100:
+        begin
+        PCWre=1;
+        ALUSrcA=0;
+        ALUSrcB=1;
+        RegWre=1;
+        InsMemRW=1;
+        mRD=1;
+        mWR=0;
+        DBDATASrc=0;
+        ALUOp=110;
+        PCSrc=0;
+        ExtSel=1;
+        RegDst=0;
+        end
+        6'b100110:
+        begin
+        PCWre=1;
+        ALUSrcA=0;
+        ALUSrcB=1;
+        RegWre=0;
+        InsMemRW=1;
+        mRD=0;
+        mWR=1;
+        DBDATASrc=0;
+        ALUOp=000;
+        PCSrc=0;
+        ExtSel=1;
+        RegDst=0;
+        end
+        6'b100111:
+        begin
+        PCWre=1;
+        ALUSrcA=0;
+        ALUSrcB=1;
+        RegWre=1;
+        InsMemRW=1;
+        mRD=1;
+        mWR=0;
+        DBDATASrc=1;
+        ALUOp=000;
+        PCSrc=0;
+        ExtSel=1;
+        RegDst=0;
+        end
+        6'b110000:
+        begin
+        PCWre=1;
+        ALUSrcA=0;
+        ALUSrcB=0;
+        RegWre=0;
+        InsMemRW=1;
+        mRD=1;
+        mWR=0;
+        DBDATASrc=0;
+        ALUOp=001;
+        if(zero==1) begin PCSrc=1; end
+        else begin PCSrc=0; end
+        ExtSel=1;
+        RegDst=0;
+        end
+        6'b110001:
+        begin
+        PCWre=1;
+                ALUSrcA=0;
+                ALUSrcB=0;
+                RegWre=0;
+                InsMemRW=1;
+                mRD=1;
+                mWR=0;
+                DBDATASrc=0;
+                ALUOp=001;
+                if(zero!=1) begin PCSrc=1; end
+                else begin PCSrc=0; end
+                ExtSel=1;
+                RegDst=0;
+        end
+        6'b110010:
+        begin
+        PCWre=1;
+                        ALUSrcA=0;
+                        ALUSrcB=0;
+                        RegWre=0;
+                        InsMemRW=1;
+                        mRD=1;
+                        mWR=0;
+                        DBDATASrc=0;
+                        ALUOp=001;
+                        if(sign!=1) begin PCSrc=0; end
+                        else begin PCSrc=1; end
+                        ExtSel=1;
+                        RegDst=0;
+        end
+        6'b111000:
+        begin
+        PCWre=1;
+        ALUSrcA=0;
+        ALUSrcB=0;
+        RegWre=0;
+        InsMemRW=1;
+        mRD=1;
+        mWR=0;
+        DBDATASrc=0;
+        ALUOp=000;
+        PCSrc[0]=0;
+        PCSrc[1]=1;
+        ExtSel=1;
+        RegDst=0;
+        end
+        6'b111111:
+        begin
+        PCWre=0;
+        end
+        endcase
+    end
+    
+endmodule

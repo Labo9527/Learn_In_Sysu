@@ -1,0 +1,263 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date: 2018/11/15 19:01:27
+// Design Name: 
+// Module Name: SingleCPU
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//////////////////////////////////////////////////////////////////////////////////
+
+
+module SingleCPU(
+//---------------------
+/*
+    input CLK,
+    input CLK2,
+    input Reset,
+    input [1:0]Src,
+    output [5:0] op,
+    output [4:0] rs,
+    output [4:0] rt,
+    output [4:0] rd,
+    output [15:0] immediate,
+    output [31:0] ReadData1,
+    output [31:0] ReadData2,
+    output [31:0] WriteData,
+    output [31:0] DataOut,
+    output [31:0] PCIN,
+    output [31:0] PCOUT,
+    output [31:0] result,
+    output [31:0] PC_4,
+    output [1:0] PCSrc,
+    output [4:0] WriteReg,
+    output DBDATASrc,
+    output[31:0] Rega,
+    output[31:0] Regb,
+    output ALUSrcA,
+    output ALUSrcB,
+    output[4:0] sa,
+    output[31:0]truesa,
+    output[31:0]PC_4_Immediate,
+    output[31:0] extendImmediate,
+    output ExtSel,
+    output zero,
+    output RegWre,
+    output [31:0] PC_3,
+    output [25:0] Bottom,
+    output [27:0] Next,
+    output [3:0] out1,
+    output [3:0] out2,
+    output [3:0] out3,
+    output [3:0] out4,
+    output [3:0] out5,
+    output outclk,
+    output reg A3,
+    output reg A2,
+    output reg A1,
+    output reg A0,
+    output [7:0] Y,
+    */
+//-----------------
+
+input CLK,
+input CLK2,
+    input Reset,
+    input [1:0]Src,
+    output reg A0,
+    output reg A1,
+    output reg A2,
+    output reg A3,
+    output [7:0] Y
+    
+    //------------------
+    /*
+    output [3:0] out1,
+        output [3:0] out2,
+        output [3:0] out3,
+        output [3:0] out4,
+        output [3:0] out5,
+        output outclk
+        
+        */
+    //
+    
+    );
+    //---------------------
+    
+        wire [5:0] op;
+        wire [4:0] rs;
+        wire [4:0] rt;
+        wire [4:0] rd;
+        wire [15:0] immediate;
+        wire [31:0] ReadData1;
+        wire [31:0] ReadData2;
+        wire [31:0] WriteData;
+        wire [31:0] DataOut;
+        wire [31:0] PCIN;
+        wire [31:0] PCOUT;
+        wire [31:0] result;
+        wire [31:0] PC_4;
+        wire [1:0] PCSrc;
+        wire [4:0] WriteReg;
+        wire DBDATASrc;
+        wire [31:0] Rega;
+        wire[31:0] Regb;
+        wire ALUSrcA;
+        wire ALUSrcB;
+        wire[4:0] sa;
+        wire[31:0]truesa;
+        wire[31:0]PC_4_Immediate;
+        wire[31:0] extendImmediate;
+        wire ExtSel;
+        wire zero;
+        wire RegWre;
+        wire [31:0] PC_3;
+        wire [25:0] Bottom;
+        wire [27:0] Next;
+        
+        //-----------
+        
+        wire [3:0] out1;
+        wire [3:0] out2;
+        wire [3:0] out3;
+        wire [3:0] out4;
+        wire [3:0] out5;
+        wire outclk;
+        
+    //---------------------
+    
+    wire RD,WR;
+    
+    wire [2:0] ALUopcode;
+    
+    
+    wire [31:0] IDataOut;
+    wire [31:0] IDataIn;
+    wire sign;
+    wire RegDst,InsMemRW,PCWre,mRD,mWR;
+    
+    assign Bottom=IDataOut[25:0];
+    assign Next=Bottom<<2;
+    assign PC_4=PCOUT+4;
+    assign PC_4_Immediate=PC_4+(extendImmediate<<2);
+    assign PC_3={PC_4[31:28],IDataOut[25:0],2'b00};
+    assign truesa={{27{1'b0}},sa};
+    
+    ControlUnit cu(op,zero,sign,RegWre,ALUSrcA,ALUSrcB,
+    PCSrc,ALUopcode,
+    RegDst,InsMemRW,PCWre,ExtSel,mRD,mWR,DBDATASrc);
+    
+    PC pc(CLK,Reset,PCWre,PCIN,PCOUT);
+    
+    InstructionMemory im(InsMemRW,PCOUT,op,rs,rt,rd,
+    sa,immediate,IDataOut);
+    
+    RegFile rf(CLK,RegWre,rs,rt,WriteReg,
+    WriteData,ReadData1,ReadData2);
+    
+    ALU alu(ALUopcode,Rega,Regb,result,zero,sign);
+    
+    SignZeroExtend sg(ExtSel,immediate,extendImmediate);
+    
+    DataMemory dm(ReadData2,DataOut,result,mRD,mWR,CLK);
+    
+    
+    
+    Multiplexer4 mul4(PCSrc,PCIN,PC_4,
+    PC_4_Immediate,PC_3);
+    
+    Multiplexer2_1 mul2_1(RegDst,rt,rd,WriteReg);
+    
+    Multiplexer2_32 mul2_2(ALUSrcA,ReadData1,truesa,
+    Rega);
+    
+    Multiplexer2_32 mul2_3(ALUSrcB,ReadData2,
+    extendImmediate,Regb);
+    
+    Multiplexer2_32 mul2_4(DBDATASrc,
+    result,DataOut,WriteData);
+    
+    wire [3:0]PC_OUT_1;
+        wire [3:0]PC_OUT_2;
+        assign PC_OUT_1=PCOUT[7:4];
+        assign PC_OUT_2=PCOUT[3:0];
+        
+        wire [3:0]PC_4_1;
+        wire [3:0]PC_4_2;
+        assign PC_4_1=PCIN[7:4];
+        assign PC_4_2=PCIN[3:0];
+        
+        wire [3:0]rs_1;
+        wire [3:0]rs_2;
+        assign rs_1=4'b0000;
+        assign rs_2=rs[3:0];
+        
+        wire [3:0]ReadData1_1;
+        wire [3:0]ReadData1_2;
+        assign ReadData1_1=ReadData1[7:4];
+        assign ReadData1_2=ReadData1[3:0];
+        
+        wire [3:0]rt_1;
+        wire [3:0]rt_2;
+        assign rt_1=4'b0000;
+        assign rt_2=rt[3:0];
+        
+        wire [3:0]ReadData2_1;
+        wire [3:0]ReadData2_2;
+        assign ReadData2_1=ReadData2[7:4];
+        assign ReadData2_2=ReadData2[3:0];
+        
+        wire [3:0]result_1;
+        wire [3:0]result_2;
+        assign result_1=result[7:4];
+        assign result_2=result[3:0];
+        
+        wire [3:0] WriteData_1;
+        wire [3:0] WriteData_2;
+        assign WriteData_1=WriteData[7:4];
+        assign WriteData_2=WriteData[3:0];
+        
+        mul4_2 mulnew1(Src,PC_OUT_1,rs_1,rt_1,result_1,out1);
+        
+        mul4_2 mulnew2(Src,PC_OUT_2,rs_2,rt_2,result_2,out2);
+        
+        mul4_2 mulnew3(Src,PC_4_1,ReadData1_1,ReadData2_1,WriteData_1,out3);
+        
+        mul4_2 mulnew4(Src,PC_4_2,ReadData1_2,ReadData2_2,WriteData_2,out4);
+    
+    clock_div clkd(CLK2,outclk);
+    
+    //wire [3:0] A;
+    //assign A={A3,A2,A1,0};
+    new_mul_out mulnew({A3,A2,A1,A0},out1,out2,out3,out4,out5);
+    //mul4_2 mulnew5(Src,out1,out2,out3,out4,out5);
+    
+    SEG7 seg(out5,Y);
+    
+    
+    //DouDong dd(outclk,CLK_DOU,CLK);
+    
+    integer i=0;
+    
+    always@(posedge outclk)begin
+        $display("JOJO");
+        i=(i+1)%4;
+        if(i==0) begin {A3,A2,A1,A0}=4'b1110;  end
+        else if(i==1) begin {A3,A2,A1,A0}=4'b1101;  end
+        else if(i==2) begin {A3,A2,A1,A0}=4'b1011;  end
+        else if(i==3) begin {A3,A2,A1,A0}=4'b0111;  end
+    end
+    
+endmodule

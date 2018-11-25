@@ -1,0 +1,143 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date: 2018/11/14 20:08:24
+// Design Name: 
+// Module Name: InstructionMemory
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//////////////////////////////////////////////////////////////////////////////////
+
+
+module InstructionMemory(
+    input RW,
+    input [31:0] IAddr,
+    output [5:0] op,
+    output [4:0] rs,
+    output [4:0] rt,
+    output [4:0] rd,
+    output [4:0] sa,
+    output [15:0] immediate,
+    output [31:0] IDataOut
+    );
+    
+    reg[7:0] memory[0:127];
+    
+    initial 
+         begin
+            $readmemb("D:/test.txt", memory);
+            /*
+            memory[0][7:0]=8'b00001000;
+            memory[1][7:0]=8'b00000001;
+            memory[2][7:0]=8'b00000000;
+            memory[3][7:0]=8'b00001000;
+            memory[4][7:0]=8'b01001000;
+            memory[5][7:0]=8'b00000010;
+            memory[6][7:0]=8'b00000000;
+            memory[7][7:0]=8'b00000010;
+            memory[8][7:0]=8'b00000000;
+            memory[9][7:0]=8'b01000001;
+            memory[10][7:0]=8'b00011000;
+            memory[11][7:0]=8'b00000000;
+            memory[12][7:0]=8'b00000100;
+            memory[13][7:0]=8'b01100010;
+            memory[14][7:0]=8'b00101000;
+            memory[15][7:0]=8'b00000000;
+            memory[16][7:0]=8'b01000100;
+            memory[17][7:0]=8'b10100010;
+            memory[18][7:0]=8'b00100000;
+            memory[19][7:0]=8'b00000000;
+            memory[20][7:0]=8'b01001100;
+            memory[21][7:0]=8'b10000010;
+            memory[22][7:0]=8'b01000000;
+            memory[23][7:0]=8'b00000000;
+            memory[24][7:0]=8'b01100000;
+            memory[25][7:0]=8'b00001000;
+            memory[26][7:0]=8'b01000000;
+            memory[27][7:0]=8'b01000000;
+            memory[28][7:0]=8'b11000101; 
+            memory[29][7:0]=8'b00000001; 
+            memory[30][7:0]=8'b11111111; 
+            memory[31][7:0]=8'b11111110;
+            memory[32][7:0]=8'b01110000;
+            memory[33][7:0]=8'b01000110;
+            memory[34][7:0]=8'b00000000;
+            memory[35][7:0]=8'b00000100;
+            memory[36][7:0]=8'b01110000; 
+            memory[37][7:0]=8'b11000111;
+            memory[38][7:0]=8'b00000000;
+            memory[39][7:0]=8'b00000000;
+            memory[40][7:0]=8'b00001000;
+            memory[41][7:0]=8'b11100111;
+            memory[42][7:0]=8'b00000000;
+            memory[43][7:0]=8'b00001000;
+            memory[44][7:0]=8'b11000000;
+            memory[45][7:0]=8'b11100001;
+            memory[46][7:0]=8'b11111111;
+            memory[47][7:0]=8'b11111110; 
+            memory[48][7:0]=8'b10011000;
+            memory[49][7:0]=8'b00100010;
+            memory[50][7:0]=8'b00000000;
+            memory[51][7:0]=8'b00000100;
+            memory[52][7:0]=8'b10011100;
+            memory[53][7:0]=8'b00101001;
+            memory[54][7:0]=8'b00000000;
+            memory[55][7:0]=8'b00000100;
+            memory[56][7:0]=8'b00001000;
+            memory[57][7:0]=8'b00001010;
+            memory[58][7:0]=8'b11111111; 
+            memory[59][7:0]=8'b11111110;
+            memory[60][7:0]=8'b00001001; 
+            memory[61][7:0]=8'b01001010;
+            memory[62][7:0]=8'b00000000;
+            memory[63][7:0]=8'b00000001;
+            memory[64][7:0]=8'b11001001;
+            memory[65][7:0]=8'b01000000;
+            memory[66][7:0]=8'b11111111;
+            memory[67][7:0]=8'b11111110;
+            memory[68][7:0]=8'b01000000; 
+            memory[69][7:0]=8'b01001011; 
+            memory[70][7:0]=8'b00000000; 
+            memory[71][7:0]=8'b00000010;
+            memory[72][7:0]=8'b11100000; 
+            memory[73][7:0]=8'b00000000; 
+            memory[74][7:0]=8'b00000000; 
+            memory[75][7:0]=8'b00010100;
+            memory[76][7:0]=8'b01001100; 
+            memory[77][7:0]=8'b10000010;
+            memory[78][7:0]=8'b01000000;
+            memory[79][7:0]=8'b00000000;
+            memory[80][7:0]=8'b11111100; 
+            memory[81][7:0]=8'b00000000; 
+            memory[82][7:0]=8'b00000000;
+            memory[83][7:0]=8'b00000000;
+            */
+         end
+    always@(*) begin
+    $display("1");
+    end
+    assign sa[4:2]=memory[IAddr+2][2:0];
+    assign sa[1:0]=memory[IAddr+3][7:6];
+    assign IDataOut[31:24]=memory[IAddr][7:0];
+    assign IDataOut[23:16]=memory[IAddr+1][7:0];
+    assign IDataOut[15:8]=memory[IAddr+2][7:0];
+    assign IDataOut[7:0]=memory[IAddr+3][7:0];
+    assign op=memory[IAddr][7:2];
+    assign rs[4:3] = memory[IAddr][1:0];
+    assign rs[2:0] = memory[IAddr + 1][7:5];
+    assign rt = memory[IAddr + 1][4:0];
+    assign rd = memory[IAddr + 2][7:3];
+    assign immediate[15:8] = memory[IAddr + 2];
+    assign immediate[7:0] = memory[IAddr + 3];
+endmodule

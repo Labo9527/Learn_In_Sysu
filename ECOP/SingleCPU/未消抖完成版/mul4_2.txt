@@ -1,0 +1,32 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date: 2018/11/19 19:42:58
+// Design Name: 
+// Module Name: mul4_2
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//////////////////////////////////////////////////////////////////////////////////
+
+
+module mul4_2(
+    input [1:0] Src,
+    input [3:0] in1,
+    input [3:0] in2,
+    input [3:0] in3,
+    input [3:0] in4,
+    output [3:0] out
+    );
+    assign out=(Src==2'b00)?in1:((Src==2'b01)?in2:((Src==2'b10)?in3:in4));
+endmodule

@@ -1,0 +1,43 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date: 2018/11/21 10:36:52
+// Design Name: 
+// Module Name: DouDong
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//////////////////////////////////////////////////////////////////////////////////
+
+
+module DouDong(
+    input CLK_FAST,
+    input CLK_SLOW,
+    output reg CLK_OUT
+    );
+    integer k;
+    always@(posedge CLK_FAST) begin
+    if(CLK_SLOW)begin
+        k=k+1;
+        end
+    end
+    always@(*) begin
+        if(CLK_SLOW) begin
+            if(k>=0)begin
+            CLK_OUT=1;
+            k=0;
+            end
+        end
+        else if(CLK_SLOW==0) begin CLK_OUT=0; end
+    end
+endmodule
