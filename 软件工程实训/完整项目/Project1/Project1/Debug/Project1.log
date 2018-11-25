@@ -1,0 +1,7 @@
+﻿  AgendaUI.cpp
+f:\pdf\project1\project1\agendaui.cpp(129): warning C4018: “<”: 有符号/无符号不匹配
+f:\pdf\project1\project1\agendaui.cpp(143): warning C4018: “<”: 有符号/无符号不匹配
+f:\pdf\project1\project1\agendaui.cpp(207): warning C4018: “<”: 有符号/无符号不匹配
+f:\pdf\project1\project1\agendaui.cpp(221): warning C4018: “<”: 有符号/无符号不匹配
+  Project1.vcxproj -> F:\PDF\Project1\Debug\Project1.exe
+  Project1.vcxproj -> F:\PDF\Project1\Debug\Project1.pdb (Partial PDB)
