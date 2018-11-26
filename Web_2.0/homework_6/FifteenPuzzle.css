@@ -1,0 +1,411 @@
+body{
+  margin: 0 auto;
+  text-align: center;
+}
+
+#Restart{
+  width: 150px;
+  line-height: 50px;
+  text-align: center;
+  height: 50px;
+  margin: 0 auto;
+  color: white;
+  display: inline-block;
+  font-weight: bold;
+  background-color: #4b5fff;
+  box-shadow: darkgray 4px 4px 4px;
+  box-shadow: darkgray 4px 4px 4px;
+  font-size: 18px;
+  cursor: pointer;
+  margin-right: 50px;
+}
+
+#RRstart{
+  display: inline-block;
+  width: 150px;
+  line-height: 50px;
+  text-align: center;
+  height: 50px;
+  margin: 0 auto;
+  color: white;
+  font-weight: bold;
+  background-color: #4b5fff;
+  box-shadow: darkgray 4px 4px 4px;
+  box-shadow: darkgray 4px 4px 4px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+#RRstart:hover{
+  width: 172px;
+  line-height: 72px;
+  height: 72px;
+  transition: 0.1s linear;
+}
+
+#Restart:hover{
+  margin-right: 50px;
+  width: 172px;
+  line-height: 72px;
+  height: 72px;
+  transition: 0.1s linear;
+}
+
+#Picture{
+  width: 374px;
+  height: 374px;
+  margin: 0 auto 30px;
+  position: relative;
+  /*background-image: url("panda.jpg");*/
+}
+
+
+#ImgPosition0{
+  background-position: 0px 0px;
+  border: solid 1px #969696;
+}
+
+#ImgPosition1{
+  background-position: -88.5px 0px;
+  border: solid 1px #969696;
+}
+
+#ImgPosition2{
+  background-position: -177px 0px;
+  border: solid 1px #969696;
+}
+
+#ImgPosition3{
+  background-position: -265.5px 0px;
+  border: solid 1px #969696;
+}
+
+#ImgPosition4{
+  background-position: 0px -88.5px;
+  border: solid 1px #969696;
+}
+
+#ImgPosition5{
+  border: solid 1px #969696;
+  background-position: -88.5px -88.5px;
+}
+
+#ImgPosition6{
+  border: solid 1px #969696;
+  background-position: -177px -88.5px;
+}
+
+#ImgPosition7{
+  border: solid 1px #969696;
+  background-position:-265.5px -88.5px ;
+}
+
+#ImgPosition8{
+  border: solid 1px #969696;
+  background-position: 0px -177px;
+}
+
+#ImgPosition9{
+  border: solid 1px #969696;
+  background-position: -88.5px -177px;
+}
+
+#ImgPosition10{
+  border: solid 1px #969696;
+  background-position: -177px -177px;
+}
+
+#ImgPosition11{
+  border: solid 1px #969696;
+  background-position: -265.5px -177px;
+}
+
+#ImgPosition12{
+  border: solid 1px #969696;
+  background-position: 0px -265.5px;
+}
+
+#ImgPosition13{
+  border: solid 1px #969696;
+  background-position: -88.5px -265.5px;
+}
+
+#ImgPosition14{
+  border: solid 1px #969696;
+  background-position: -177px -265.5px;
+}
+
+#ImgPosition15{
+  background-position:-265.5px -265.5px;
+  opacity: 0;
+}
+
+#ImgPosition0:hover{
+  width: 98.5px ;
+  height: 98.5px ;
+  background-position: 0px 0px;
+  border: solid 1px #969696;
+}
+
+#ImgPosition1:hover{
+  width: 98.5px;
+  height: 98.5px;
+  background-position: -88.5px 0px;
+  border: solid 1px #969696;
+}
+
+#ImgPosition2:hover{
+  width: 98.5px;
+  height: 98.5px;
+  background-position: -177px 0px;
+  border: solid 1px #969696;
+}
+
+#ImgPosition3:hover{
+  width: 98.5px;
+  height: 98.5px;
+  background-position: -265.5px 0px;
+  border: solid 1px #969696;
+}
+
+#ImgPosition4:hover{
+  width: 98.5px;
+  height: 98.5px;
+  background-position: 0px -88.5px;
+  border: solid 1px #969696;
+}
+
+#ImgPosition5:hover{
+  width: 98.5px;
+  height: 98.5px;
+  background-position: -88.5px -88.5px;
+  border: solid 1px #969696;
+}
+
+#ImgPosition6:hover{
+  width: 98.5px;
+  height: 98.5px;
+  background-position: -177px -88.5px;
+  border: solid 1px #969696;
+}
+
+
+#ImgPosition7:hover{
+  width: 98.5px;
+  height: 98.5px;
+  background-position:-265.5px -88.5px ;
+  border: solid 1px #969696;
+}
+
+#ImgPosition8:hover{
+  width: 98.5px;
+  height: 98.5px;
+  background-position: 0px -177px;
+  border: solid 1px #969696;
+}
+
+#ImgPosition9:hover{
+  width: 98.5px;
+  height: 98.5px;
+  background-position: -88.5px -177px;
+  border: solid 1px #969696;
+}
+
+
+#ImgPosition10:hover{
+  width: 98.5px;
+  height: 98.5px;
+  background-position: -177px -177px;
+  border: solid 1px #969696;
+}
+
+#ImgPosition11:hover{
+  width: 98.5px;
+  height: 98.5px;
+  background-position: -265.5px -177px;
+  border: solid 1px #969696;
+}
+
+#ImgPosition12:hover{
+  width: 98.5px;
+  height: 98.5px;
+  background-position: 0px -265.5px;
+  border: solid 1px #969696;
+}
+
+#ImgPosition13:hover{
+  width: 98.5px;
+  height: 98.5px;
+  background-position: -88.5px -265.5px;
+  border: solid 1px #969696;
+}
+
+#ImgPosition14:hover{
+  width: 98.5px;
+  height: 98.5px;
+  background-position: -177px -265.5px;
+  border: solid 1px #969696;
+}
+
+#ImgPosition15:hover{
+  width: 98.5px;
+  height: 98.5px;
+  background-position:-265.5px -265.5px;
+  opacity: 0;
+  border: solid 1px #969696;
+}
+
+.BoxPosition0{
+  width: 88.5px;
+  height: 88.5px;
+  background-image: url("panda.jpg");
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+.BoxPosition1{
+  width: 88.5px;
+  height: 88.5px;
+  background-image: url("panda.jpg");
+  position: absolute;
+  top: 0px;
+  left: 88.5px;
+}
+
+.BoxPosition2{
+  width: 88.5px;
+  height: 88.5px;
+  background-image: url("panda.jpg");
+  position: absolute;
+  top: 0px;
+  left: 177px;
+}
+
+.BoxPosition3{
+  width: 88.5px;
+  height: 88.5px;
+  background-image: url("panda.jpg");
+  position: absolute;
+  top: 0px;
+  left: 265.5px;
+}
+
+.BoxPosition4{
+  width: 88.5px;
+  height: 88.5px;
+  background-image: url("panda.jpg");
+  position: absolute;
+  top: 88.5px;
+  left: 0px;
+}
+
+.BoxPosition5{
+  width: 88.5px;
+  height: 88.5px;
+  background-image: url("panda.jpg");
+  position: absolute;
+  top: 88.5px;
+  left: 88.5px;
+}
+
+.BoxPosition6{
+  width: 88.5px;
+  height: 88.5px;
+  background-image: url("panda.jpg");
+  position: absolute;
+  top: 88.5px;
+  left: 177px;
+}
+
+.BoxPosition7{
+  width: 88.5px;
+  height: 88.5px;
+  background-image: url("panda.jpg");
+  position: absolute;
+  top: 88.5px;
+  left: 265.5px;
+}
+
+.BoxPosition8{
+  width: 88.5px;
+  height: 88.5px;
+  background-image: url("panda.jpg");
+  position: absolute;
+  top: 177px;
+  left: 0px;
+}
+
+.BoxPosition9{
+  width: 88.5px;
+  height: 88.5px;
+  background-image: url("panda.jpg");
+  position: absolute;
+  top: 177px;
+  left: 88.5px;
+}
+
+.BoxPosition10{
+  width: 88.5px;
+  height: 88.5px;
+  background-image: url("panda.jpg");
+  position: absolute;
+  top: 177px;
+  left: 177px;
+}
+
+.BoxPosition11{
+  width: 88.5px;
+  height: 88.5px;
+  background-image: url("panda.jpg");
+  position: absolute;
+  top: 177px;
+  left: 265.5px;
+}
+
+.BoxPosition12{
+  width: 88.5px;
+  height: 88.5px;
+  background-image: url("panda.jpg");
+  position: absolute;
+  top: 265.5px;
+  left: 0px;
+}
+
+.BoxPosition13{
+  width: 88.5px;
+  height: 88.5px;
+  background-image: url("panda.jpg");
+  position: absolute;
+  top: 265.5px;
+  left: 88.5px;
+}
+
+.BoxPosition14{
+  width: 88.5px;
+  height: 88.5px;
+  background-image: url("panda.jpg");
+  position: absolute;
+  top: 265.5px;
+  left: 177px;
+}
+
+.BoxPosition15{
+  width: 88.5px;
+  height: 88.5px;
+  background-image: url("panda.jpg");
+  position: absolute;
+  top: 265.5px;
+  left: 265.5px;
+}
+
+#Answer{
+  width: 354px;
+  height: 100px;
+  margin: 0 auto;
+  line-height: 100px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
