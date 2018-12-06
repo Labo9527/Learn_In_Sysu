@@ -4,7 +4,7 @@ using namespace std;
 
 int n, k, temp;
 int A[10000005];
-int h[20000005] = { 0 };//有毛区别啊？ 这一行变成h[1000000005]就不行？
+int h[20000005] = { 0 };//有毛区别啊？ 这一行变成h[1000000005]就不行？//我觉得之前一直TLE是主元没选好
 
 void swap(int *a, int *b) {
 	if (a != b) {
