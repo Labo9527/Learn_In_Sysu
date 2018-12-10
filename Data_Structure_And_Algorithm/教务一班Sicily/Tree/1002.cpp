@@ -7,13 +7,13 @@ struct Node {
 	Node*left;
 	Node*Right;
 	char val;
-	Node(char val, Node* left, Node *Right) :val(val), left(left),Right(Right) {};
+	Node(char val, Node* left, Node *Right) :val(val), left(left), Right(Right) {};
 	Node() { left = nullptr; Right = nullptr; };
 };
 
 Node root;
 
-void CreateTree(string pre, string inorder,Node* now) {
+void CreateTree(string pre, string inorder, Node* now) {
 	now->val = pre[0];
 	string s1, s2, s3, s4;
 	int i;
@@ -56,5 +56,6 @@ int main() {
 	cin >> pre >> inorder;
 	CreateTree(pre, inorder, &root);
 	PostTraverse(&root);
+	cout << endl;
 	return 0;
 }

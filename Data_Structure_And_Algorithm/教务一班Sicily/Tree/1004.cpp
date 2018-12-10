@@ -12,17 +12,21 @@ template <typename T> struct BinaryNode {
 
 template <typename T>
 void inorder_recursive(BinaryNode<T>* root, void(*visit)(T &x)) {
+	if (root == NULL)
+		return;
 	if (root->left != NULL)
-		inorder_recursive(root->left,visit);
+		inorder_recursive(root->left, visit);
 	visit(root->elem);
 	if (root->right != NULL)
-		inorder_recursive(root->right,visit);
+		inorder_recursive(root->right, visit);
 }
 
 template <typename T>
 void inorder(BinaryNode<T>* root, void(*visit)(T &x)) {
+	if (root == NULL)
+		return;
 	stack<BinaryNode<T>*> Book;
-	while (root != NULL||!Book.empty()) {
+	while (root != NULL || !Book.empty()) {
 		while (root != NULL) {
 			Book.push(root);
 			root = root->left;

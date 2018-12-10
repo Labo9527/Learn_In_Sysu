@@ -12,13 +12,15 @@ template <typename T> struct BinaryNode {
 
 template <typename T>
 void levelTraversal(BinaryNode<T>* root, void(*visit)(T &x)) {
+	if (root == NULL)
+		return;
 	queue<BinaryNode<T>*> Book;
 	Book.push(root);
 	while (!Book.empty()) {
 		root = Book.front();
 		Book.pop();
 		visit(root->elem);
-		if(root->left!=NULL)
+		if (root->left != NULL)
 			Book.push(root->left);
 		if (root->right != NULL)
 			Book.push(root->right);

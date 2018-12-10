@@ -8,7 +8,7 @@ int main() {
 	int T;
 	int K = 1;
 	cin >> T;
-	while (K<=T) {
+	while (K <= T) {
 		int L, R;
 		cin >> L >> R;
 		CountLeft = 0;
@@ -24,7 +24,7 @@ int main() {
 			}
 		}
 		cout << "Scenario #" << K << ":" << endl;
-		cout << CountLeft << "  " << CountRight << endl;
+		cout << CountLeft << " " << CountRight << endl;
 		K++;
 	}
 	return 0;
