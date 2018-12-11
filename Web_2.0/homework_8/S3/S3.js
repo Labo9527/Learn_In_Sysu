@@ -90,7 +90,7 @@ window.onload=function () {
             document.getElementById("info-bar").style.backgroundColor="#303F9F";
         }
       }
-    xmlhttp.open("POST","Digit", true);
+    xmlhttp.open("GET","Digit1", true);
       xmlhttp.send();
   }
 
@@ -125,7 +125,7 @@ window.onload=function () {
           document.getElementById("info-bar").style.backgroundColor="#303F9F";
       }
     }
-    xmlhttp.open("POST","Digit", true);
+    xmlhttp.open("GET","Digit2", true);
     xmlhttp.send();
   }
 
@@ -160,7 +160,7 @@ window.onload=function () {
           document.getElementById("info-bar").style.backgroundColor="#303F9F";
       }
     }
-    xmlhttp.open("POST","Digit", true);
+    xmlhttp.open("GET","Digit3", true);
     xmlhttp.send();
     console.log("请求已发出");
   }
@@ -196,7 +196,7 @@ window.onload=function () {
           document.getElementById("info-bar").style.backgroundColor="#303F9F";
       }
     }
-    xmlhttp.open("POST","Digit", true);
+    xmlhttp.open("GET","Digit4", true);
     xmlhttp.send();
   }
 
@@ -232,7 +232,7 @@ window.onload=function () {
       }
     }
     console.log("E请求已发出");
-    xmlhttp.open("POST","Digit", true);
+    xmlhttp.open("GET","Digit5", true);
     xmlhttp.send();
   }
   document.getElementById("button").classList.add("hover");
