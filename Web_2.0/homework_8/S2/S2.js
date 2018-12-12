@@ -204,9 +204,11 @@ window.onload=function () {
     xmlhttp.open("GET","Digit", true);
     xmlhttp.send();
   }
-  document.getElementById("button").classList.add("hover");
-  document.getElementById("control-ring").classList.add("hover");
-  autoClick();
+  //document.getElementById("button").classList.add("hover");
+  //document.getElementById("control-ring").classList.add("hover");
+  document.getElementById("at").onclick=function() {
+    autoClick();
+  };
 }
 
 autoClick=function () {
