@@ -1,25 +1,3 @@
-`timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date: 2018/12/08 11:05:13
-// Design Name: 
-// Module Name: ControlUnit
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
-//////////////////////////////////////////////////////////////////////////////////
-
-
 module ControlUnit(
     input CLK,
     input Reset,
@@ -43,6 +21,25 @@ module ControlUnit(
     output reg[2:0] State
     );
     //reg[2:0] State;
+    always@(negedge CLK) begin
+        if(opcode==6'b111111) begin PCWre=0; end
+    end
+    always@(opcode or sign or zero)begin
+        if(opcode==6'b110101)
+                    begin
+                       ALUSrcA=0;
+                       ALUSrcB=0;
+                       InsMemRW=1;
+                                       DBDATASrc=0;
+                       ALUOp=3'b001;
+                       if(zero==1) PCSrc=0;
+                       else PCSrc=1;
+                       ExtSel=1;
+                       RegDst=2'b01;
+                       WrRegDSrc=1; 
+                    end
+    end
+    
     always@(negedge CLK or posedge Reset) begin
         if(Reset==1)
             begin
@@ -94,7 +91,8 @@ module ControlUnit(
                                 6'b111000,6'b111001,6'b111010,6'b111111:
                                 begin
                                     State<=3'b000;
-                                    PCWre=1;
+                                    if(opcode==6'b111111) begin PCWre=0; end
+                                    else begin PCWre=1; end
                                 end
                                 default:begin State<=3'b110; PCWre=0; end
                             endcase
@@ -169,7 +167,7 @@ module ControlUnit(
                 endcase
             end
     end
-    always@(opcode or sign or zero) begin
+    always@(opcode or sign ) begin
         case(opcode)
             6'b000000:
                 begin
