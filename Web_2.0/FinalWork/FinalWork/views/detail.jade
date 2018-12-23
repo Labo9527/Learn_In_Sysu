@@ -1,0 +1,18 @@
+extends layout
+
+block content
+
+  h1 用户详情
+  #BigDiv
+    p#username
+      span 用户名：#{user.username}
+    p#code
+      span 学号：#{user.code}
+    p#phone
+      span 电话号码：#{user.phone}
+    p#mail
+      span 邮箱：#{user.mail}
+      br
+      form(method='post')
+        input.button.submit(value='退出', type='submit')
+    link(rel='stylesheet', type='text/css', href='/stylesheets/Detail.css')

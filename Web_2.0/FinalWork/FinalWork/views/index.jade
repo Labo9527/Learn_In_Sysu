@@ -1,0 +1,43 @@
+extends layout
+
+block content
+
+  h1 用户注册
+  span.unique #{whathappen}
+  #BigDiv
+    form(method='post')
+      #div1
+        label(for='username') 用户名
+        input#username(name='username' value=user.username)
+        p.er
+
+      #div5
+        label(for='password') 密码
+        input#password(name='password' value=user.username type='password')
+        p.er
+
+      #div6
+        label(for='repeat-password') 重复密码
+        input#repeat-password(name='repeat-password' value=user.username type='password')
+        p.er
+
+      #div2
+        label(for='code') 学号
+        input#code(name='code' value=user.code)
+        p.er
+      #div3
+        label(for='phone') 电话号码
+        input#phone(name='phone' value=user.phone)
+        p.er
+      #div4
+        label(for='mail') 邮箱
+        input#mail(name='mail' value=user.mail)
+        p.er
+      br
+      input.button.reset(value='重置', type='reset')
+      input.button.submit(value='提交', type='submit')
+      a.switch-signin-signup(href='/signin') 登录
+      script(src='/javascripts/index.js', type='text/javascript')
+      script(src='/javascripts/check.js', type='text/javascript')
+      script(src='https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js', type='text/javascript')
+      link(rel='stylesheet', type='text/css', href='/stylesheets/index.css')

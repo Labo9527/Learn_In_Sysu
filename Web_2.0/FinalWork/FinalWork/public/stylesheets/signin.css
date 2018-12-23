@@ -1,0 +1,109 @@
+body{
+  text-align: center;
+  font-family:Georgia;
+  background-image: url("../images/sha_bg_01.png");
+  color: white;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0;
+  padding-right: 0;
+  width: 100%;
+}
+
+h1{
+  font-size: 70px;
+  margin-top: 50px;
+  font-weight: bold;
+}
+
+form{
+  margin-top: 300px;
+  color: black;
+}
+
+#BigDiv{
+  display: block;
+  background-color: aliceblue;
+  opacity: 0.7;
+  height: 280px;
+  width: 100%;
+}
+
+div{
+  /*padding-top: 20px;*/
+  /*padding-top: 20px;
+  padding-bottom: 20px;
+  */
+  /*display: inline-block;*/
+}
+
+label{
+  display: inline-block;
+  margin-right: 50px;
+  margin-left: 30px;
+  width: 80px;
+}
+
+button{
+  position: relative;
+  top: 100px;
+  line-height: 100%;
+  text-align: center;
+  width: 100px;
+  height: 20px;
+  margin-top: 40px;
+  margin-right: 30px;
+}
+
+.button{
+  position: relative;
+  top: 20px;
+  margin-top: 30px;
+  margin-right: 30px;
+}
+
+div#div1{
+  position: relative;
+  top:20px;
+}
+
+div#div2{
+  position: relative;
+  top:80px;
+}
+
+div#div3{
+  position: relative;
+  top:100px;
+}
+
+div#div4{
+  position: relative;
+  top:120px;
+}
+
+div#div5{
+  position: relative;
+  top:40px;
+}
+
+div#div6{
+  position: relative;
+  top:60px;
+}
+
+p{
+  position: relative;
+  right: 50px;
+  color: red;
+}
+
+.unique{
+  color: red;
+}
+
+.switch-signin-signup{
+  position: relative;
+  top:60px;
+  right: 60px;
+}
