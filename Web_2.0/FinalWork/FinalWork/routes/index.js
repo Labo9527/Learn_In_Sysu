@@ -177,7 +177,7 @@ checkUnique=function(user){
         Flag=true;
       }
     });
-  setTimeout(function () {
+//  setTimeout(function () {
     return Flag;
-  },100)
+// },100)
 };
