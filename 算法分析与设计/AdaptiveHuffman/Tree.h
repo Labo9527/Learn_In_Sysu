@@ -10,12 +10,12 @@ using namespace std;
 
 class tree {
 public:
-	tree() {
+	tree() {	//默认构造函数
 		root = new Node();
 		root->setData('N');
 		root->setFrequency(0);
 	}
-	void insert(unsigned char t) {
+	void insert(unsigned char t) {	//插入新节点
 		Node *NYT = findNYT();
 		Node *l = new Node();
 		l->setFrequency(0);
@@ -24,7 +24,7 @@ public:
 		NYT->setLeft(l);
 		NYT->setRight(r);
 	}
-	void correct_frequency(Node *t) {
+	void correct_frequency(Node *t) {	//用DFS来校正所有频次
 		int a = 0, b = 0;
 		if (t->getLeft() != NULL) {
 			correct_frequency(t->getLeft());
@@ -37,7 +37,7 @@ public:
 		if (a != 0 || b != 0)
 			t->setFrequency(a + b);
 	}
-	Node *FindString(Node *r, string s) {
+	Node *FindString(Node *r, string s) {	//找出某个编码是否有对应的叶子节点
 		if (s.length() == 0 && r->getLeft() == NULL&&r->getRight() == NULL)
 			return r;
 		if (s.length() == 0)
@@ -63,7 +63,7 @@ public:
 		return NULL;
 		*/
 	}
-	void update() {
+	void update() {	//更新Huffman树
 		bool ok = false;
 		while (!ok) {
 			ok = true;
@@ -111,7 +111,7 @@ public:
 
 		}
 	}
-	bool find_code(unsigned char t, Node *r, string &s) {
+	bool find_code(unsigned char t, Node *r, string &s) {	//找出某个字符的编码
 		if (r->getData() == t && r->getFrequency() != 0 && r->getLeft() == NULL && r->getLeft() == NULL)
 			return true;
 		if (r->getLeft() != NULL&&find_code(t, r->getLeft(), s)) {
@@ -137,7 +137,7 @@ public:
 		}
 		return false;
 	}
-	Node *findNYT() {
+	Node *findNYT() {	//找出空节点
 		queue<Node*> q;
 		q.push(root);
 		while (!q.empty()) {
@@ -151,7 +151,7 @@ public:
 				q.push(t->getRight());
 		}
 	}
-	bool find(unsigned char a) {
+	bool find(unsigned char a) {	//寻找某个字符是否存在
 		queue<Node*> q;
 		q.push(root);
 		while (!q.empty()) {
@@ -166,7 +166,7 @@ public:
 		}
 		return false;
 	}
-	Node *get(unsigned char a) {
+	Node *get(unsigned char a) {	//获取某字符的叶子节点
 		queue<Node*> q;
 		q.push(root);
 		while (!q.empty()) {

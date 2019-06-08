@@ -5,7 +5,7 @@
 
 using namespace std;
 
-class Node {
+class Node {	//½ÚµãÀà
 public:
 	Node() {
 		data = 'N';

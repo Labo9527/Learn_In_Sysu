@@ -14,7 +14,7 @@ map<string, unsigned char> init_code2;
 string source;
 string target;
 
-void init_map() {
+void init_map() {	//初始编码表
 	for (int i = 0; i < 256; i++) {
 		string sample;
 		int t = i;
@@ -28,11 +28,11 @@ void init_map() {
 	}
 }
 
-void encode(ifstream &in, ofstream& out) {
+void encode(ifstream &in, ofstream& out) {	//压缩函数
 	ifstream in1(source.c_str(), ios::binary);
 	char temp1;
 	int sum = 0;
-	while (true) {
+	while (true) {	//先读取所有文件，PS：这不是必要的，只是为了引入进度条，以免用户等待无反馈
 		temp1 = in1.get();
 		if (in1.eof())break;
 		sum++;
@@ -43,25 +43,25 @@ void encode(ifstream &in, ofstream& out) {
 	string help;
 	int count = 0;
 	while (true) {
-		cout << count++ << "/" << sum << endl;
+		cout << count++ << "/" << sum << endl;	//输出进度条
 		temp = in.get();
 		if (count == 835)
 			count = count;
-		if (in.eof()) break;
-		if (hft.find(temp) == true) {
+		if (in.eof()) break;	//如果读取完，则结束函数
+		if (hft.find(temp) == true) {	//若出现过该字符
 			if (temp == 'N')
 				temp = temp;
 			string s1;
 			hft.find_code(temp, hft.getRoot(), s1);
 			help += s1;
-			Node *justfor = hft.FindString(hft.getRoot(), s1);
+			Node *justfor = hft.FindString(hft.getRoot(), s1);	//更新频次，并更新树，按照Huffman树写入压缩文件
 			Node *s = hft.get(temp);
 			s->setFrequency(s->getFrequency() + 1);
 			hft.correct_frequency(hft.getRoot());
 			hft.update();
 			hft.correct_frequency(hft.getRoot());
 		}
-		else {
+		else {	//如果没有出现这个字符，则新插入节点
 			if (temp == 'N')
 				temp = temp;
 			string s1;
@@ -73,7 +73,7 @@ void encode(ifstream &in, ofstream& out) {
 			hft.update();
 			hft.correct_frequency(hft.getRoot());
 		}
-		while (help.length() >= 8) {
+		while (help.length() >= 8) {	//输出缓冲区
 			char c1 = '\0';
 			for (int i = 0; i < 8; i++) {
 				c1 <<= 1;
@@ -84,7 +84,7 @@ void encode(ifstream &in, ofstream& out) {
 			out.write((char *)&c1, sizeof(unsigned char));
 		}
 	}
-	if (help.length() > 0) {
+	if (help.length() > 0) {	//后补0操作
 		char c1 = '\0';
 		for (int i = 0; i < help.length(); i++) {
 			c1 <<= 1;
@@ -99,7 +99,7 @@ void encode(ifstream &in, ofstream& out) {
 	return;
 }
 
-bool theend(string a) {
+bool theend(string a) {	//判断是否是压缩程序补0导致的
 	if (a.length() > 8)
 		return false;
 	for (int i = 0; i < a.length(); i++)
@@ -108,12 +108,12 @@ bool theend(string a) {
 	return true;
 }
 
-void decode(ifstream& in, ofstream& out) {
+void decode(ifstream& in, ofstream& out) {	//压缩函数
 
 	char temp1;
 	ifstream in1(source.c_str(), ios::binary);
 	int sum = 0;
-	while (true) {
+	while (true) {	//先读取所有文件，PS：这不是必要的，只是为了引入进度条，以免用户等待无反馈
 		temp1 = in1.get();
 		if (in1.eof())break;
 		sum++;
@@ -127,11 +127,11 @@ void decode(ifstream& in, ofstream& out) {
 	bool thefirst = true;
 	bool newchar = false;
 	while (true) {
-		cout << count++ << "/" << sum << endl;
+		cout << count++ << "/" << sum << endl;	//输出进度条
 		if (count == 559)
 			count = count;
 		temp = in.get();
-		if (in.eof()) break;
+		if (in.eof()) break;	//若读取完毕，则退出函数
 		for (int i = 0; i < 8; i++) {
 			if (temp & 128)
 				tohelp += '1';
@@ -139,7 +139,7 @@ void decode(ifstream& in, ofstream& out) {
 				tohelp += '0';
 			temp <<= 1;
 		}
-		if (tohelp.length() >= 10000)
+		if (tohelp.length() >= 10000)	//缓冲区过长则报警，以免溢出
 			cout << "WARNING" << endl;
 		for (int i = 0; i < tohelp.length(); i++) {
 			
@@ -148,7 +148,7 @@ void decode(ifstream& in, ofstream& out) {
 			
 			Node *s1 = hft.FindString(hft.getRoot(), tohelp.substr(0, i));
 			if (s1 != NULL) {
-				if (s1->getFrequency() == 0) {
+				if (s1->getFrequency() == 0) {	//若是空节点，则表示是由新字符输入，我们根据初始编码表解码并插入节点，更新Huffman树
 
 					cout << count++ << "/" << sum << endl;
 					temp = in.get();
@@ -170,7 +170,7 @@ void decode(ifstream& in, ofstream& out) {
 					tohelp.erase(tohelp.begin(), tohelp.begin() + i + 8);
 					i = 0;
 				}
-				else {
+				else {	//若出现过该字符，则按照Huffman树来写入文件，并且更新Huffman树
 					out << s1->getData();
 					s1->setFrequency(s1->getFrequency() + 1);
 					hft.correct_frequency(hft.getRoot());
@@ -248,7 +248,7 @@ int main() {
 	return 0;
 	*/
 	int choice;
-	while (true) {
+	while (true) {	//UI界面
 		cout << "欢迎使用自适应哈弗曼压缩程序" << endl;
 		cout << "1.压缩程序" << endl;
 		cout << "2.解压程序" << endl;
