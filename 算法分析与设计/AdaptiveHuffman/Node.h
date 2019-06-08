@@ -13,7 +13,7 @@ public:
 		left = NULL;
 		right = NULL;
 	};
-	Node(unsigned char a, int b) :data(a), frequency(b) { 
+	Node(unsigned char a, int b) :data(a), frequency(b) {
 		par = NULL;
 		left = NULL;
 		right = NULL;

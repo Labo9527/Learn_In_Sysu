@@ -34,31 +34,31 @@ public:
 			correct_frequency(t->getRight());
 			b = t->getRight()->getFrequency();
 		}
-		if(a!=0||b!=0)
+		if (a != 0 || b != 0)
 			t->setFrequency(a + b);
 	}
-	Node *FindString(Node *r,string s) {
+	Node *FindString(Node *r, string s) {
 		if (s.length() == 0 && r->getLeft() == NULL&&r->getRight() == NULL)
 			return r;
 		if (s.length() == 0)
 			return NULL;
 		if (s[0] == '0')
-			return r->getLeft()==NULL?NULL:FindString(r->getLeft(), s.substr(1, s.length() - 1));
+			return r->getLeft() == NULL ? NULL : FindString(r->getLeft(), s.substr(1, s.length() - 1));
 		if (s[0] == '1')
-			return r->getRight()==NULL?NULL:FindString(r->getRight(), s.substr(1, s.length() - 1));
+			return r->getRight() == NULL ? NULL : FindString(r->getRight(), s.substr(1, s.length() - 1));
 		/*
 		for (int i = 0; i < s.length(); i++) {
-			if (s[i] == '0') {
-				if (r->getLeft() == NULL)
-					return NULL;
-				return FindString(r->getLeft(), s.substr(0, s.length() - 1));
-			}
-			else if (s[i] == '1') {
-				if (r->getRight() == NULL) {
-					return NULL;
-				}
-				return FindString(r->getRight(), s.substr(0, s.length() - 1));
-			}
+		if (s[i] == '0') {
+		if (r->getLeft() == NULL)
+		return NULL;
+		return FindString(r->getLeft(), s.substr(0, s.length() - 1));
+		}
+		else if (s[i] == '1') {
+		if (r->getRight() == NULL) {
+		return NULL;
+		}
+		return FindString(r->getRight(), s.substr(0, s.length() - 1));
+		}
 		}
 		return NULL;
 		*/
@@ -81,21 +81,21 @@ public:
 					q.push(v[v.size() - 1]->getLeft());
 			}
 
-			for (int i = v.size()-1; i >=0 ; i--) {
-				for (int j = v.size() - 1 ; j > i; j--) {
+			for (int i = v.size() - 1; i >= 0; i--) {
+				for (int j = v.size() - 1; j > i; j--) {
 					if (v[i]->getFrequency() < v[j]->getFrequency()) {
 						ok = false;
 						Node *p1 = v[i]->getPar();
 						Node *p2 = v[j]->getPar();
 						bool one = true;
 						bool two = true;
-						if (p1->getLeft() == v[i]) 
+						if (p1->getLeft() == v[i])
 							one = true;
-						else 
+						else
 							one = false;
-						if (p2->getLeft() == v[j]) 
+						if (p2->getLeft() == v[j])
 							two = true;
-						else 
+						else
 							two = false;
 						if (one) p1->setLeft(v[j]);
 						else p1->setRight(v[j]);
@@ -111,14 +111,14 @@ public:
 
 		}
 	}
-	bool find_code(unsigned char t,Node *r,string &s) {
-		if (r->getData() == t && r->getFrequency()!=0 && r->getLeft() == NULL && r->getLeft() == NULL)
+	bool find_code(unsigned char t, Node *r, string &s) {
+		if (r->getData() == t && r->getFrequency() != 0 && r->getLeft() == NULL && r->getLeft() == NULL)
 			return true;
-		if (r->getLeft()!=NULL&&find_code(t, r->getLeft(), s)) {
-			s = '0' + s ;
+		if (r->getLeft() != NULL&&find_code(t, r->getLeft(), s)) {
+			s = '0' + s;
 			return true;
 		}
-		if (r->getRight()!=NULL&&find_code(t, r->getRight(), s)) {
+		if (r->getRight() != NULL&&find_code(t, r->getRight(), s)) {
 			s = '1' + s;
 			return true;
 		}
@@ -127,11 +127,11 @@ public:
 	bool find_NYT_Code(Node *r, string &s) {
 		if (r->getFrequency() == 0 && r->getLeft() == NULL && r->getLeft() == NULL)
 			return true;
-		if (r->getLeft()!=NULL&&find_NYT_Code(r->getLeft(), s)) {
+		if (r->getLeft() != NULL&&find_NYT_Code(r->getLeft(), s)) {
 			s = '0' + s;
 			return true;
 		}
-		if (r->getRight()!=NULL&&find_NYT_Code(r->getRight(), s)) {
+		if (r->getRight() != NULL&&find_NYT_Code(r->getRight(), s)) {
 			s = '1' + s;
 			return true;
 		}
@@ -143,7 +143,7 @@ public:
 		while (!q.empty()) {
 			Node *t = q.front();
 			q.pop();
-			if (t->getFrequency()==0 && t->getLeft() == NULL &&t->getRight() == NULL)
+			if (t->getFrequency() == 0 && t->getLeft() == NULL &&t->getRight() == NULL)
 				return t;
 			if (t->getLeft() != NULL)
 				q.push(t->getLeft());
