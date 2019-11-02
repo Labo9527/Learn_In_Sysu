@@ -13,7 +13,7 @@
     "http-errors": "~1.6.2",
     "jade": "~1.11.0",
     "mongodb": "^2.2.33",
-    "mongoose": "^5.4.0",
+    "mongoose": "^5.7.5",
     "morgan": "~1.9.0",
     "session-file-store": "^1.2.0"
   }
